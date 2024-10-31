@@ -28,11 +28,11 @@ def save_employee_todo_progress(employee_id):
 
         with open(filename, 'w', newline='') as file:
             writer = csv.writer(file)
-            field = [
-                "USER_ID", "USERNAME",
-                "TASK_COMPLETED_STATUS", "TASK_TITLE"
-            ]
-            writer.writerow(field)
+            # field = [
+            #     "USER_ID", "USERNAME",
+            #     "TASK_COMPLETED_STATUS", "TASK_TITLE"
+            # ]
+            # writer.writerow(field)
             for task in todos:
                 writer.writerow({
                     employee_id,

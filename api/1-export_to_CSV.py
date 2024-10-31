@@ -31,7 +31,8 @@ def save_employee_todo_progress(employee_id):
             field = [
                 "USER_ID", "USERNAME",
                 "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-            # writer.writerow(field)
+            writer.writerow(field)
+
             for task in todos:
                 writer.writerow(
                     [employee_id, employee_name,

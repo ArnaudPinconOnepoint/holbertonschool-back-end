@@ -2,6 +2,7 @@
 """Record the TODO list for a given employee ID in CSV"""
 
 import csv
+import json
 import requests
 import sys
 
@@ -24,23 +25,20 @@ def save_employee_todo_progress(employee_id):
         user_info = user_response.json()
         employee_name = user_info.get('name')
 
-        filename = "{employee_id}.csv"
+        data ={}
+        data[employee_id] = []
+        for task in todos:
+            data[employee_id].append({
+                "task": task.get('title'),
+                "completed": task.get('completed'),
+                "username": employee_name
+            })
 
-        with open(filename, 'w', newline='') as file:
-            writer = csv.writer(file)
-            field = [
-                "USER_ID", "USERNAME",
-                "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-            writer.writerow(field)
-
-            for task in todos:
-                writer.writerow(
-                    [employee_id, employee_name,
-                     task.get('completed'), task.get('title')])
+        with open("{employee_id}.json", "w") as file:
+            json.dump(data, file)
 
     except requests.RequestException as e:
         print(f'Error fetching data: {e}')
-
 
 if __name__ == "__main__":
     # Check if an employee ID is provided

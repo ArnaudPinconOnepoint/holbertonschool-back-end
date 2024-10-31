@@ -30,7 +30,7 @@ def get_employee_todo_progress(employee_id):
 
         # Output the results
         print(
-            f'Employee {employee_name} is done with tasks '
+            f'Employee {employee_name} is done with tasks'
             f'({number_of_done_tasks}/{total_tasks}):'
         )
 

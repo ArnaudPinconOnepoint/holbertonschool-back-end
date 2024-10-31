@@ -26,8 +26,10 @@ def save_employee_todo_progress(employee_id):
 
         with open('tasks.csv', 'w', newline='') as file:
             writer = csv.writer(file)
-            field = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-
+            field = [
+                "USER_ID", "USERNAME",
+                "TASK_COMPLETED_STATUS", "TASK_TITLE"
+            ]
             writer.writerow(field)
             for task in todos:
                 writer.writerow({
@@ -39,6 +41,7 @@ def save_employee_todo_progress(employee_id):
 
     except requests.RequestException as e:
         print(f'Error fetching data: {e}')
+
 
 if __name__ == "__main__":
     # Check if an employee ID is provided

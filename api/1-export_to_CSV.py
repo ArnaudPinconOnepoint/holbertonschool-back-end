@@ -46,15 +46,15 @@ def save_employee_todo_progress(employee_id):
 
 
 if __name__ == "__main__":
-    # # Check if an employee ID is provided
-    # if len(sys.argv) != 2:
-    #     print("Usage: python3 todo_progress.py <employee_id>")
-    #     sys.exit(1)
+    # Check if an employee ID is provided
+    if len(sys.argv) != 2:
+        print("Usage: python3 todo_progress.py <employee_id>")
+        sys.exit(1)
 
-    # try:
-    #     employee_id = int(sys.argv[1])
-    # except ValueError:
-    #     print("Please provide a valid integer for employee ID.")
-    #     sys.exit(1)
+    try:
+        employee_id = int(sys.argv[1])
+    except ValueError:
+        print("Please provide a valid integer for employee ID.")
+        sys.exit(1)
 
-    save_employee_todo_progress(2)
+    save_employee_todo_progress(employee_id)

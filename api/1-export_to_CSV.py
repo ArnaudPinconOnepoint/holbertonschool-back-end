@@ -24,7 +24,9 @@ def save_employee_todo_progress(employee_id):
         user_info = user_response.json()
         employee_name = user_info.get('name')
 
-        with open('tasks.csv', 'w', newline='') as file:
+        filename = "USER_ID.csv"
+
+        with open(filename, 'w', newline='') as file:
             writer = csv.writer(file)
             field = [
                 "USER_ID", "USERNAME",
@@ -33,10 +35,10 @@ def save_employee_todo_progress(employee_id):
             writer.writerow(field)
             for task in todos:
                 writer.writerow({
-                    'USER_ID': employee_id,
-                    'USERNAME': employee_name,
-                    'TASK_COMPLETED_STATUS': task.get('completed'),
-                    'TASK_TITLE': task.get('title'),
+                    employee_id,
+                    employee_name,
+                    task.get('completed'),
+                    task.get('title'),
                 })
 
     except requests.RequestException as e:
@@ -44,15 +46,15 @@ def save_employee_todo_progress(employee_id):
 
 
 if __name__ == "__main__":
-    # Check if an employee ID is provided
-    if len(sys.argv) != 2:
-        print("Usage: python3 todo_progress.py <employee_id>")
-        sys.exit(1)
+    # # Check if an employee ID is provided
+    # if len(sys.argv) != 2:
+    #     print("Usage: python3 todo_progress.py <employee_id>")
+    #     sys.exit(1)
 
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Please provide a valid integer for employee ID.")
-        sys.exit(1)
+    # try:
+    #     employee_id = int(sys.argv[1])
+    # except ValueError:
+    #     print("Please provide a valid integer for employee ID.")
+    #     sys.exit(1)
 
-    save_employee_todo_progress(employee_id)
+    save_employee_todo_progress(2)

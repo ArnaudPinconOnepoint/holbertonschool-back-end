@@ -28,18 +28,14 @@ def save_employee_todo_progress(employee_id):
 
         with open(filename, 'w', newline='') as file:
             writer = csv.writer(file)
-            # field = [
-            #     "USER_ID", "USERNAME",
-            #     "TASK_COMPLETED_STATUS", "TASK_TITLE"
-            # ]
-            # writer.writerow(field)
+            field = [
+                "USER_ID", "USERNAME",
+                "TASK_COMPLETED_STATUS", "TASK_TITLE"]
+            #writer.writerow(field)
             for task in todos:
-                writer.writerow({
-                    employee_id,
-                    employee_name,
-                    task.get('completed'),
-                    task.get('title'),
-                })
+                writer.writerow(
+                    [employee_id, employee_name, 
+                     task.get('completed'), task.get('title')])
 
     except requests.RequestException as e:
         print(f'Error fetching data: {e}')

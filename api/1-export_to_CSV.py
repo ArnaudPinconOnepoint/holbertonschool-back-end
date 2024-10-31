@@ -1,11 +1,9 @@
-import csv
-
-
 #!/usr/bin/python3
 """Record the TODO list for a given employee ID in CSV"""
 
 import requests
 import sys
+import csv
 
 
 def save_employee_todo_progress(employee_id):

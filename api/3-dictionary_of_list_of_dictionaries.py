@@ -31,7 +31,7 @@ def save_employees_todo_progress(employee_ids):
             employee_name = user_info.get('name')
 
             # Filter todos for the specific employee ID
-            user_todos = [task for task in todos 
+            user_todos = [task for task in todos
                           if task.get('userId') == employee_id]
 
             data[employee_id] = [

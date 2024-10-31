@@ -31,7 +31,9 @@ def save_employees_todo_progress(employee_ids):
             employee_name = user_info.get('name')
 
             # Filter todos for the specific employee ID
-            user_todos = [task for task in todos if task.get('userId') == employee_id]
+            user_todos = [task for task in todos 
+                          if task.get('userId') == employee_id]
+
             data[employee_id] = [
                 {
                     "task": task.get('title'),
@@ -52,7 +54,7 @@ def save_employees_todo_progress(employee_ids):
 if __name__ == "__main__":
     # Check if employee IDs are provided
     if len(sys.argv) < 2:
-        print("Usage: python3 todo_progress.py <employee_id1> <employee_id2> ...")
+        print("Give a list of integer")
         sys.exit(1)
 
     try:
